@@ -12,7 +12,7 @@ command! -nargs=0 Annotate
 
 " Global options definition.
 let g:annotator#annotation#directory =
-		\ get(g:, 'annotator#annotation#directory', '~/.vim-annotation')
+		\ get(g:, 'annotator#annotation#directory', expand('~/.vim-annotation'))
 let g:annotator#annotation#filetype =
 		\ get(g:, 'annotator#annotation#filetype', 'markdown')
 
