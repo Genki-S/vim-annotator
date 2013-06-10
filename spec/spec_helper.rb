@@ -25,3 +25,20 @@ Vimrunner::RSpec.configure do |config|
     vim
   end
 end
+
+RSpec.configure do |config|
+  config.before(:each) do
+    @annotation_dir = "#{Dir.pwd}/.annotation"
+    @annotation_filetype = 'markdown'
+    @filename = "#{Dir.pwd}/temp.txt"
+    @contents_dir = @filename.gsub('/', '%')
+
+    # Set plugin options
+    vim.let 'g:annotator#annotation#directory', @annotation_dir
+    vim.let 'g:annotator#annotation#filetype', @annotation_filetype
+
+    # Create Sandbox
+    vim.edit!(@filename)
+    vim.insert('Hello, World.')
+  end
+end
