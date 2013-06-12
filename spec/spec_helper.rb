@@ -1,6 +1,7 @@
 require 'vimrunner'
 require 'vimrunner/rspec'
 require 'tempfile'
+require_relative 'support/vim'
 
 Vimrunner::RSpec.configure do |config|
   # Use a single Vim instance for the test suite. Set to false to use an
@@ -27,6 +28,8 @@ Vimrunner::RSpec.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include Support::Vim
+
   config.before(:each) do
     @annotation_dir = "#{Dir.pwd}/.annotation"
     @annotation_filetype = 'markdown'
@@ -38,7 +41,6 @@ RSpec.configure do |config|
     vim.let 'g:annotator#annotation#filetype', @annotation_filetype
 
     # Create Sandbox
-    vim.edit!(@filename)
-    vim.insert('Hello, World.')
+    set_file_contents_with_line_numbers(100)
   end
 end
