@@ -12,7 +12,7 @@ describe ':Annotate' do
 
   it 'opens an annotation file corresponding to current buffer and line no.' do
     buffer = vim.echo 'expand("%:p")'
-    buffer.should eq File.join(@annotation_dir, @contents_dir, '1')
+    buffer.should eq File.join(@annotation_dir, @contents_dir, @cursor_line.to_s)
   end
 
   it 'sets annotation buffer filetype with g#annotator#annotation#filetype' do

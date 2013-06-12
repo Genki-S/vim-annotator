@@ -41,6 +41,9 @@ RSpec.configure do |config|
     vim.let 'g:annotator#annotation#filetype', @annotation_filetype
 
     # Create Sandbox
-    set_file_contents_with_line_numbers(100)
+    @n_lines = 100
+    set_file_contents_with_line_numbers(@n_lines)
+    @cursor_line = (1..@n_lines).to_a.sample
+    vim.normal("#{@cursor_line}G")
   end
 end
