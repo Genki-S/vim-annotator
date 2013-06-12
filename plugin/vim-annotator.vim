@@ -9,6 +9,8 @@ set cpo&vim
 " Commands
 command! -nargs=0 Annotate
 		\ call annotator#annotation#annotate()
+command! -nargs=0 AnnotationList
+		\ call annotator#list#setloclist()
 
 " Global options definition.
 let g:annotator#annotation#directory =
